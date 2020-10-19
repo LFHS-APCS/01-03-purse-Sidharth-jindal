@@ -9,7 +9,8 @@ public class MoneyIntro
      */
     public int getDollarsFromMoney(double money)
     {
-        return 0;
+      int dollars = (int) money;
+      return dollars;
     }
 
     /**
@@ -17,6 +18,5 @@ public class MoneyIntro
      */
     public int getCentsFromMoney(double money)
     {
-        return 0;
     }
 }

@@ -11,6 +11,7 @@ public class Purse
         pennies = 0;
         nickels = 0;
         dimes = 0;
+        quarters = 0;
     }
 
     /**
@@ -35,6 +36,10 @@ public class Purse
     int getDimes() 
     { 
         return dimes;
+    }
+
+    int getQuarters(){
+      return quarters;
     }
 
     /**
@@ -64,13 +69,17 @@ public class Purse
         dimes = dimes + count;
     }
 
+    public void addQuarters(int count){
+      quarters = quarters + count;
+    }
+
     /**
     Get the total value of the coins in the purse.
     @return the sum of all coin values
      */
     public double getTotal()
     {
-        int cents =  pennies + nickels * NICKEL_VALUE + dimes * DIME_VALUE;
+        int cents =  pennies + nickels * NICKEL_VALUE + dimes * DIME_VALUE + quarters*QUARTER_VALUE;
         return cents/100.0;
     }
 
@@ -84,11 +93,20 @@ public class Purse
      */
     public void loadPurse(int cents)
     {
+      int quartersinbag = getTotal/QUARTER_VALUE;
+      int dimesinbag = (getTotal-quarters*QUARTER_VALUE)/DIME_VALUE;
+      int nickelsinbag = (getTotal-quarters*QUARTER_VALUE-dimes*DIME_VALUE)/NICKEL_VALUE;
+      int penniesinbag = (getTotal-quarters*QUARTER_VALUE-dimes*DIME_VALUE-nickels*NICKEL_VALUE);
+      return quartersinbag;
+      return dimesinbag;
+      return nickelsinbag;
+      return penniesinbag;
 
     }
 
     private final int NICKEL_VALUE = 5;
     private final int DIME_VALUE = 10;
+    private final int QUARTER_VALUE = 25;
 
     private int pennies;
     private int nickels;
